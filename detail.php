@@ -1,19 +1,72 @@
 <?php
 
-require __DIR__ .  '/vendor/autoload.php';
+    require __DIR__ .  '/vendor/autoload.php';
 
-    // Agrega credenciales
     MercadoPago\SDK::setAccessToken('APP_USR-6317427424180639-042414-47e969706991d3a442922b0702a0da44-469485398');
+    MercadoPago\SDK::setIntegratorId("dev_24c65fb163bf11ea96500242ac130004");
 
-    // Crea un objeto de preferencia
+    // preference 
     $preference = new MercadoPago\Preference();
 
-    // Crea un ítem en la preferencia
+    // items data
+
     $item = new MercadoPago\Item();
-    $item->title = 'Mi producto';
+    $item->id = "1234";
+    $item->title = $_POST['title'];
+    $item->description = "Dispositivo móvil de Tienda e-commerce";
     $item->quantity = 1;
-    $item->unit_price = 75.56;
+    $item->currency_id = "ARS";
+    $item->unit_price = $_POST['price'];
+    $item->external_reference = "mserravalle92@gmail.com";
+
+    // Payer Data
+
+    $payer = new MercadoPago\Payer();
+    $payer->name = "Lalo ";
+    $payer->surname = "Landa";
+    $payer->email = "test_user_63274575@testuser.com";
+    $payer->phone = array(
+        "area_code" => "11",
+        "number" => "22223333"
+    );
+    
+    $payer->address = array(
+        "street_name" => "False",
+        "street_number" => 123,
+        "zip_code" => "1111"
+    );
+
+    
+
+    //preference data
+
+    
+    //back urls
+
+    /*$preference->back_urls = array(
+        "success" => "https://www.tu-sitio/success",
+        "failure" => "http://www.tu-sitio/failure",
+        "pending" => "http://www.tu-sitio/pending"
+    );
+    $preference->auto_return = "approved";*/
+    
+    // payment methods
+
+    /*$preference->payment_methods = array(
+        "excluded_payment_methods" => array(
+            array("id" => "master")
+        ),
+        "excluded_payment_types" => array(
+            array("id" => "ticket")
+        ),
+        "installments" => 12
+    );*/
+
+    // Notification url
+    // $preference->notification_url = "back url";
+
     $preference->items = array($item);
+    $preference->payer = $payer;
     $preference->save();
 
 ?>
@@ -150,7 +203,7 @@ require __DIR__ .  '/vendor/autoload.php';
                                             <?php echo "$" . $_POST['unit'] ?>
                                         </h3>
                                     </div>
-                                    <button type="submit" class="mercadopago-button" formmethod="post">Pagar</button>
+                                    <!-- <button type="submit" class="mercadopago-button" formmethod="post">Pagar</button> -->
                                     <form action="/procesar-pago" method="POST">
                                         <script
                                         src="https://www.mercadopago.com.ar/integrations/v1/web-payment-checkout.js"
