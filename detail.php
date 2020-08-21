@@ -1,6 +1,7 @@
 <?php
-
     require __DIR__ .  '/vendor/autoload.php';
+    
+    const BASE_URL = 'https://mserravalle-mp-ecommerce-php.herokuapp.com/';
 
     MercadoPago\SDK::setAccessToken('APP_USR-6317427424180639-042414-47e969706991d3a442922b0702a0da44-469485398');
     MercadoPago\SDK::setIntegratorId("dev_24c65fb163bf11ea96500242ac130004");
@@ -17,6 +18,7 @@
     $item->quantity = 1;
     $item->currency_id = "ARS";
     $item->unit_price = $_POST['price'];
+    $item->picture_url = BASE_URL.$_POST['img'];
 
     // Payer Data
 
@@ -42,12 +44,13 @@
     
     //back urls
 
-    /*$preference->back_urls = array(
-        "success" => "https://www.tu-sitio/success",
-        "failure" => "http://www.tu-sitio/failure",
-        "pending" => "http://www.tu-sitio/pending"
+    $preference->back_urls = array(
+        "success" => BASE_URL."success",
+        "failure" => BASE_URL."failure",
+        "pending" => BASE_URL."pending"
     );
-    $preference->auto_return = "approved";*/
+
+    $preference->auto_return = "approved";
     
     // payment methods
 
@@ -56,7 +59,7 @@
             array("id" => "amex")
         ),
         "excluded_payment_types" => array(
-            array("id" => "ticket")
+            array("id" => "atm")
         ),
         "installments" => 6
     );
@@ -70,6 +73,7 @@
     $preference->save();
 
 ?>
+
 <script src="https://www.mercadopago.com/v2/security.js" view="home"></script>
 
 <!DOCTYPE html>
@@ -207,6 +211,7 @@
                                     <!-- <button type="submit" class="mercadopago-button" formmethod="post">Pagar</button> -->
                                     <form action="/procesar-pago" method="POST">
                                         <script
+                                        data-button-label="Pagar la compra"
                                         src="https://www.mercadopago.com.ar/integrations/v1/web-payment-checkout.js"
                                         data-preference-id="<?php echo $preference->id; ?>">
                                         </script>
