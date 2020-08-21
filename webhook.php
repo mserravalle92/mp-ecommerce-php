@@ -20,7 +20,7 @@ switch($_POST["type"]) {
         break;
 }
 
-file_put_contents('webhookResponse.json',json_encode($_REQUEST));
+file_put_contents('webhookResponse.json',json_encode($payment));
 
 ?>
 
