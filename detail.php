@@ -17,14 +17,13 @@
     $item->quantity = 1;
     $item->currency_id = "ARS";
     $item->unit_price = $_POST['price'];
-    $item->external_reference = "mserravalle92@gmail.com";
 
     // Payer Data
 
     $payer = new MercadoPago\Payer();
-    $payer->name = "Lalo ";
+    $payer->name = "Lalo";
     $payer->surname = "Landa";
-    $payer->email = "test_user_63274575@testuser.com";
+    $payer->email = "test_user_60552641@testuser.com";
     $payer->phone = array(
         "area_code" => "11",
         "number" => "22223333"
@@ -52,24 +51,26 @@
     
     // payment methods
 
-    /*$preference->payment_methods = array(
+    $preference->payment_methods = array(
         "excluded_payment_methods" => array(
-            array("id" => "master")
+            array("id" => "amex")
         ),
         "excluded_payment_types" => array(
             array("id" => "ticket")
         ),
-        "installments" => 12
-    );*/
+        "installments" => 6
+    );
 
     // Notification url
     // $preference->notification_url = "back url";
 
     $preference->items = array($item);
     $preference->payer = $payer;
+    $preference->external_reference = "mserravalle92@gmail.com";
     $preference->save();
 
 ?>
+<script src="https://www.mercadopago.com/v2/security.js" view="home"></script>
 
 <!DOCTYPE html>
 <html class="supports-animation supports-columns svg no-touch no-ie no-oldie no-ios supports-backdrop-filter as-mouseuser" lang="en-US"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
