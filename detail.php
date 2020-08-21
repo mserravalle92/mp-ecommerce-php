@@ -4,7 +4,7 @@
 
     MercadoPago\SDK::setAccessToken(ACCESS_TOKEN);
     MercadoPago\SDK::setIntegratorId(INTEGRATOR_ID);
-
+var_export(BASE_URL.$_POST['img']);
     // preference 
     $preference = new MercadoPago\Preference();
 
