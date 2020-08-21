@@ -7,7 +7,7 @@ MercadoPago\SDK::setAccessToken(ACCESS_TOKEN);
 
 $webhookNotification = file_get_contents('php://input');
 
-file_put_contents('webhookResponse.json',$webhookNotification);
+file_put_contents('webhookResponse.json',$_POST);
 
 ?>
 
