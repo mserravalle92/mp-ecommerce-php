@@ -5,7 +5,7 @@ require __DIR__ . '/env.php';
 
 MercadoPago\SDK::setAccessToken(ACCESS_TOKEN);
 
-$weebhookNotification = file_get_contents('php://input');
+$webhookNotification = file_get_contents('php://input');
 
 switch($_POST["type"]) {
     case "payment":
@@ -22,7 +22,7 @@ switch($_POST["type"]) {
         break;
 }
 
-file_put_contents('webhookResponse.json',$payment);
+file_put_contents('webhookResponse.json',$webhookNotification);
 
 ?>
 
