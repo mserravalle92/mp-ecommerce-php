@@ -7,6 +7,7 @@
     // preference 
     $preference = new MercadoPago\Preference();
 
+
     // items data
 
     $item = new MercadoPago\Item();
@@ -23,7 +24,7 @@
     $payer = new MercadoPago\Payer();
     $payer->name = "Lalo";
     $payer->surname = "Landa";
-    $payer->email = "test_user_60552641@testuser.com";
+    $payer->email = "test_user_63274575@testuser.com";
     $payer->phone = array(
         "area_code" => "11",
         "number" => "22223333"
@@ -198,10 +199,10 @@
                                             </h3>
                                         </div>
                                         <h3 >
-                                            <?php echo $_POST['price'] ?>
+                                            <?php echo "$" . $_POST['price'] ?>
                                         </h3>
                                         <h3 >
-                                            <?php echo "$" . $_POST['unit'] ?>
+                                            <?php echo $_POST['unit'] ?>
                                         </h3>
                                     </div>
 
@@ -220,7 +221,6 @@
                 <div class="as-footnotes-sosumi">
                     Todos los derechos reservados Tienda Tecno 2019
                     <?php 
-var_export(BASE_URL.$_POST['img']);
 
 ?>
                 </div>
