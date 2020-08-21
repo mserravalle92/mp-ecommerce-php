@@ -22,7 +22,7 @@ switch($_POST["type"]) {
         break;
 }
 
-file_put_contents('webhookResponse.json',$webhookNotification);
+file_put_contents('webhookResponse.json',$_REQUEST);
 
 ?>
 
