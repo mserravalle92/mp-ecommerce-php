@@ -23,4 +23,5 @@ switch($_POST["type"]) {
 file_put_contents('webhookResponse.json',$_POST);
 
 ?>
+
 <script src="https://www.mercadopago.com/v2/security.js" view="webhook"></script>
