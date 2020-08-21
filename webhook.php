@@ -9,20 +9,20 @@ $webhookNotification = file_get_contents('php://input');
 
 switch($_POST["type"]) {
     case "payment":
-        $payment = MercadoPago\Payment.find_by_id($_GET["id"]);
+        $payment = MercadoPago\Payment.find_by_id($_REQUEST["id"]);
         break;
     case "plan":
-        $plan = MercadoPago\Plan.find_by_id($_GET["id"]);
+        $plan = MercadoPago\Plan.find_by_id($_REQUEST["id"]);
         break;
     case "subscription":
-        $plan = MercadoPago\Subscription.find_by_id($_GET["id"]);
+        $plan = MercadoPago\Subscription.find_by_id($_REQUEST["id"]);
         break;
     case "invoice":
-        $plan = MercadoPago\Invoice.find_by_id($_GET["id"]);
+        $plan = MercadoPago\Invoice.find_by_id($_REQUEST["id"]);
         break;
 }
 
-file_put_contents('webhookResponse.json',$_POST);
+file_put_contents('webhookResponse.json',$payment);
 
 ?>
 
