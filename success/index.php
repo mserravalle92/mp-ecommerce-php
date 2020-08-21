@@ -23,7 +23,7 @@
 
     <a href="http://mserravalle-mp-ecommerce-php.herokuapp.com/">Volver al catalogo</a>
     
-    <script src="https://www.mercadopago.com/v2/security.js" view="home"></script>
+    <script src="https://www.mercadopago.com/v2/security.js" view="success"></script>
 
 </body>
 </html>

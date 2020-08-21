@@ -21,3 +21,4 @@ switch($_POST["type"]) {
 }
 
 ?>
+<script src="https://www.mercadopago.com/v2/security.js" view="webhook"></script>
