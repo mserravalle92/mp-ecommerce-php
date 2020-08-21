@@ -5,6 +5,8 @@ require __DIR__ . '/env.php';
 
 MercadoPago\SDK::setAccessToken(ACCESS_TOKEN);
 
+$entityBody = file_get_contents('php://input');
+
 switch($_POST["type"]) {
     case "payment":
         $payment = MercadoPago\Payment.find_by_id($_POST["id"]);
@@ -20,7 +22,7 @@ switch($_POST["type"]) {
         break;
 }
 
-file_put_contents('webhookResponse.json',json_encode($_REQUEST));
+file_put_contents('webhookResponse.json',$entityBody);
 
 ?>
 
